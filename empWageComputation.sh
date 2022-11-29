@@ -3,10 +3,9 @@
 #Employee attendence
 
 attendence=$(( RANDOM%3 ));
-wage_per_hr=20
-full_day_hr=8
-part_time_hr=4
-daily_working_hr=8
+wage_per_hr=20;
+days_of_month=20;
+daily_working_hr=8;
 
 case $attendence in
 	1)
@@ -28,4 +27,6 @@ esac
 
 daily_wage_employee=$(( $wage_per_hr * $working_hr));
 echo "Employee daily wage is " $daily_wage_employee;
+monthly_salary=$(( $daily_wage_employee * $days_of_month ));
+echo "The employee's month salary is $monthly_salary";
 
