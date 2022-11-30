@@ -27,17 +27,22 @@ function Employee_salary(){
 		esac	
 
 		totalWoorkingHour=$(( $totalWoorkingHour + $working_hr ));
+		daily_wage=$(( $wage_per_hr * $working_hr ));	
+
+
 		if [ $totalWoorkingHour -gt 100 ]
 		then
 			totalWorkingHour=$(( $working_hr - $totalWoorkingHour ));
+			salary=$(( $totalWoorkingHour * wage_per_hr ));
 			break;
 		fi
-		salary=$(( $working_hr - $totalWoorkingHour ));
-		totalsalary=$((totalsalary + $salary));
+		salary=$(( $totalWoorkingHour * wage_per_hr ));
+		
 		((days_of_month++));
 	done
-	echo "Employee has earned $totalsalary in a month";
-	if [  $totalsalary -eq 0 ]
+	echo "Employee has earned $salary in a month";	
+	echo "Employee has earned $daily_wage in a Day";
+	if [  $salary -eq 0 ]
 	then
 		echo "Total working Hour of employee in month is 0";
 	else
