@@ -14,17 +14,14 @@ function Employee_salary(){
 
 		case $attendence in
 			1)
-				echo "Employee is present for full day work";
 				working_hr=$daily_working_hr
 			;;
 	
 			2)
-				echo "Employee is present for part time work";
 				working_hr=$(($daily_working_hr/2))
 			;;
 	
 			*)
-				echo "Employee is absent";
 				working_hr=0
 			;;
 		esac	
@@ -37,10 +34,15 @@ function Employee_salary(){
 		fi
 		salary=$(( $working_hr - $totalWoorkingHour ));
 		totalsalary=$((totalsalary + $salary));
-		
 		((days_of_month++));
 	done
-	echo "Employee has earned $totalsalary in a month (Total working Hour : $totalWorkingHour)";
+	echo "Employee has earned $totalsalary in a month";
+	if [  $totalsalary -eq 0 ]
+	then
+		echo "Total working Hour of employee in month is 0";
+	else
+		echo "Total working Hour of employee in month is $totalWoorkingHour";
+	fi
 }
 Employee_salary
 
